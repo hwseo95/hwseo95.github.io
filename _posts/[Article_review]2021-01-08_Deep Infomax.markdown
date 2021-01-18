@@ -14,7 +14,7 @@ comments: true
 [마이크로소프트 블로그: https://www.microsoft.com/en-us/research/blog/deep-infomax-learning-good-representations-through-mutual-information-maximization/](https://www.microsoft.com/en-us/research/blog/deep-infomax-learning-good-representations-through-mutual-information-maximization/)
 
 ## Introduction
----
+
 딥러닝의 한 주요 목적은 인풋 데이터의 유용한 잠재 표현을 학습하는 것입니다. 
 잠재 표현을 학습하는 방법에는 지도 학습 세팅에서 클래스 구분에 적합하도록 학습하거나 비지도 학습 세팅에서 인풋을 복원하기 위한 잠재 표현을 학습 (Autoencoder)하는 등 다양한 목적으로 학습할 수 있지만, 
 본 논문은 인풋의 정보를 최대한 보존 (상호정보량을 최대화)하는 잠재 표현을 학습하려 합니다. 
@@ -28,7 +28,7 @@ comments: true
 본 논문은 이미지 데이터에 대해서 주로 설명하지만 모든 temporal data에 다 적용가능하다고 합니다.
 
 ## Related work
----
+
 상호정보량은 비지도 학습에서 중요한 역할을 합니다. 
 $$I(X, Y) = D_{KL}(P(X, Y)|P(X)P(Y)) = \integral_x \integral_y p(x, y)log\frac{p(x,y)}{p(x)p(y)}$$
 상호정보량은 정보이론 관점에서 Y를 알게 됨으로 X에 대해 알게 된 정보의 양으로 해석할 수 있고 통계학 관점에서 X와 Y의 상호 의존성 (dependence)의 정도를 수치화한 값입니다. 상호정보량은 두 확률변수가 독립하다면 (independent) 0으로 최소, 두 확률 변수가 어떤 함수의 형태로 명시적으로 표현될 수 있다면 최대가 됩니다.
@@ -42,7 +42,7 @@ local한 변수는 이미지에서는 픽셀 또는 패치, sequential data (문
 즉 CPC는 각 timestamp마다 잠재 표현을 학습하고, DIM은 각 timestamp (이미지 픽셀)을 집합하여 한 잠재 표현을 학습합니다.
 
 ## Deep Infomax
----
+
 Deep Infomax는 잠재 표현을 학습하는 인코더, 인풋의 global 정보를 보존하기 위한 Discriminator (MINE), local 정보를 보존하기 위한 Discriminator (MINE), 잠재 표현에 특정 통계적 성질을 반영하기 위한 Discriminator로 총 1개의 인코더와 3개의 분별자로 구성됩니다.
 이 구조를 통해 DIM의 인코더는 두 가지 목적을 따라 학습됩니다.
 
@@ -103,7 +103,7 @@ $$(\hat{\omega}, \hat{\psi})_P = argmin_{\psi}argmax_{\phi}\hat{\mathit{D}_{\phi
 ![그림5](https://hwseo95.github.io/assets/img/Article_review/Representation_learning/deepinfomax_fig5.png)
 
 ## Experiments
----
+
 본 논문은 크게 3가지 실험을 진행했습니다. 첫째, 분류 정확도 평가 둘째, proxy들을 활용하여 잠재 표현 평가 셋째, 좌표 정보 또는 가림 (coordinate information and occlusions)을 추가했을 때 분류 정확도 평가.  
 CIFAR10, CIFAR100, Tiny ImageNet, STL-10, CelebA 등의 이미지 데이터셋을 활용했고 비교한 모델은 여러 unsupervised representation learning 방법론들과 CPC, global 정보만 반영하는 DIM(G) ($\alpha=1, \beta=0, \gamma=1$), local 정보만 반영하는 DIM(L) ($\alpha=0, \beta=1, \gamma=0.1$)입니다. representation learning 방법론의 분류 성능을 평가하기 위해 학습한 표현을 인풋으로 하는 간단한 분류기 (fc, convnet 등)을 마지막 단에 결합했습니다.
 
