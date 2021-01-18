@@ -56,11 +56,11 @@ Deep Infomax는 잠재 표현을 학습하는 인코더, 인풋의 global 정보
 
 1. Mutual information estimation and maximization
 
-![그림1](https://hwseo95.github.io/assets/img/Article_review/Representation_learning/deepinfomax_fig1.png)
+![그림1](https://hwseo95.github.io/assets/img/Article_review/deep_infomax/deepinfomax_fig1.png)
 
 이미지 (다른 temporal data에도 적용 가능) $X$는 Figure 1처럼 여러 feature map을 통해 $ M \times M $ feature vector로 인코딩되고, 한 feature vector $Y$로 축약됩니다 $y=E_\psi(x)$. $y$는 인코더에서 $X$와의 상호정보량 $I(x, E_\psi(x))$가 최대가 되는 파라미터 $\psi$를 찾도록 학습하게 됩니다. 
 
-![그림2](https://hwseo95.github.io/assets/img/Article_review/Representation_learning/deepinfomax_fig2.png)
+![그림2](https://hwseo95.github.io/assets/img/Article_review/deep_infomax/deepinfomax_fig2.png)
 
 상호정보량 최대화를 위한 구조는 MINE이라는 신경망 기반의 상호정보량 추정 모델을 따릅니다. Figure 2에서 MINE 적용 원리를 알 수 있습니다. 
 - discriminator (MINE)에게 feature vector $Y$와 한 이미지의 $M \times M$ feature map을 입력합니다. 
@@ -84,11 +84,11 @@ DIM은 상호정보량을 최대화하는데 관심이 있지, 정확한 상호�
 
 2. Local mutual information maximization
 
-![그림4](https://hwseo95.github.io/assets/img/Article_review/Representation_learning/deepinfomax_fig4.png)
+![그림4](https://hwseo95.github.io/assets/img/Article_review/deep_infomax/deepinfomax_fig4.png)
 
 Global DIM은 한 데이터 (이미지) 전체와 잠재 표현과의 상호정보량을 최대화하지만 이는 task에 따라 부적합합니다. 예를 들어, 이미지에서 이미지와 관련 없는 배경 등 pixel-level noise에 대한 정보들을 인코딩하는 것은 유용하지 않을 수 있습니다. 위 그림은 고양이를 나타내는 이미지인데, 뒷 배경은 고양이와 관련없는 정보들입니다. 관련없는 정보들의 인코딩을 막고 이미지 전체에 공유된 정보를 학습하기 위해 Local DIM 구조를 제안합니다.
 
-![그림3](https://hwseo95.github.io/assets/img/Article_review/Representation_learning/deepinfomax_fig3.png)
+![그림3](https://hwseo95.github.io/assets/img/Article_review/deep_infomax/deepinfomax_fig3.png)
 
 Local DIM의 discriminator는 global DIM의 discriminator가 feature map 전체와 $Y$의 score를 계산하는 것과 달리 feature map의 각 local part (pixel 또는 patch)와 $Y$의 score를 모두 계산하여 평균을 취합니다. Local DIM은 global 정보인 $Y$와 local 정보인 각 pixel or patch의 상호정보량을 계산하여 이미지에 공유된 정보를 학습하고 불필요한 정보의 인코딩을 막습니다. 
 
@@ -102,7 +102,7 @@ $$(\hat{\omega}, \hat{\psi})_P = argmin_{\psi}argmax_{\phi}\hat{\mathit{D}_{\phi
 
 세 목적함수, global and local MI maximization and prior matching은 $\alpha$, $\beta$, $\gamma$ 정규화 파라미터가 곱해져 3가지 목적을 동시에 달성합니다.
 
-![그림5](https://hwseo95.github.io/assets/img/Article_review/Representation_learning/deepinfomax_fig5.png)
+![그림5](https://hwseo95.github.io/assets/img/Article_review/deep_infomax/deepinfomax_fig5.png)
 
 ## Experiments
 
