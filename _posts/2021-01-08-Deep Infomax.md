@@ -6,8 +6,8 @@ cover-img: /assets/img/path.jpg
 thumbnail-img: /assets/img/thumb.png
 share-img: /assets/img/path.jpg
 tags:
+use_math: true
 comments: true
-
 ---
 
 안녕하세요! 제가 처음으로 정리할 논문은 [Learning deep representations by mutual information estimation and maximization](https://arxiv.org/pdf/1808.06670.pdf) 제목의 논문입니다. 2019년에 ICLR에서 발표되었습니다. 이 논문을 공부하면서 PR12 논문읽기 모임의 발표 영상 자료와 저자들이 작성한 마이크로소프트 블로그를 많이 참고하였습니다. 링크는 아래와 같습니다.
