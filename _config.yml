@@ -33,6 +33,12 @@ round-avatar: true
 # then specify the following parameter
 #title-img: /path/to/image
 
+# Conversion
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
 
 # --- Footer social media links --- #
 
