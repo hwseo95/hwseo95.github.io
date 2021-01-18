@@ -1,11 +1,10 @@
 ---
 layout: post
-title:  "Deep Infomax"
-subtitle:   "Learning deep representations by mutual information estimation and maximization"
-categories: Article_review
-tags: Representation_learning
-use_math: true
-
+title: [ICLR 2019] Learning deep representations by mutual information estimation and maximization
+subtitle: Deep Infomax, Mutual information maximization, MINE
+gh-repo: hwseo95/hwseo95.github.io
+gh-badge: 
+tags:
 comments: true
 ---
 
