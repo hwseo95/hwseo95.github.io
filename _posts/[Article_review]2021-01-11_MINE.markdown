@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Mutual information neural estimation"
-subtitle:   "MINE"
-categories: Article_review
-tags: Representation_learning
-
+title: [ICML 2018] Mutual Information Neural Estimation
+subtitle: MINE, Mutual information
+gh-repo: hwseo95/hwseo95.github.io
+gh-badge: 
+tags:
 comments: true
 ---
 
