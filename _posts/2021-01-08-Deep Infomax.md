@@ -74,12 +74,12 @@ y는 인코더에서 X와의 상호정보량 I(x, y)가 최대가 되는 파라�
 논문 3.1 섹션의 후반 내용은 MINE에 대한 수식적인 이해가 필요한 내용입니다. 관심 있으신 분들은 읽어보심을 추천드립니다.  
 MINE은 샘플이 결합 확률 분포 P(X, Y)의 샘플인지 주변 확률 분포 P(X), P(Y)의 샘플인가를 구분하는 분류기를 학습하면서 상호정보량을 추정합니다. MINE은 Donsker-Varadhan representation (DV) 기반의 상호정보량의 하한(lower bound)을 최대화하여 I(X, Y)의 추정치를 찾아갑니다. 
 
-![formular](https://render.githubusercontent.com/render/math?math=$I(X;Y)>= \hat{I}_\omega^(DV)(X;Y):=\mathbb{M}_\mathbb{J}[T_\omega(x, y)] - log\mathbb{E}_\mathbb{M}[e^{T_\omega(x,y)}]$)
+![formular](https://render.githubusercontent.com/render/math?math=I(X;Y)>= \hat{I}_\omega^(DV)(X;Y):=\mathbb{M}_\mathbb{J}[T_\omega(x, y)] - log\mathbb{E}_\mathbb{M}[e^{T_\omega(x,y)}])
 
 여기서 Tw가 상호정보량을 추정하도록 학습되는 MINE의 신경망입니다.
 그래서 DIM은 상호정보량을 추정 및 최대화를 동시에 진행하며 인코더를 학습합니다. 
 
-![formular](https://render.githubusercontent.com/render/math?math=$(\hat{\omega}, \hat{\psi})_G = argmax_{\omega, \psi}\hat{I}_{\omega, \psi}(X;E_{\psi}(X))$)
+![formular](https://render.githubusercontent.com/render/math?math=(\hat{\omega}, \hat{\psi})_G = argmax_{\omega, \psi}\hat{I}_{\omega, \psi}(X;E_{\psi}(X)))
 
 여기서 G는 global을 의미하는데, 데이터 X 전체와 잠재 표현 E_\psi(X)의 상호정보량을 최대화하는 목적이기 때문입니다.
 
@@ -95,13 +95,13 @@ Global DIM은 한 데이터 (이미지) 전체와 잠재 표현과의 상호정�
 
 Local DIM의 discriminator는 global DIM의 discriminator가 feature map 전체와 Y의 score를 계산하는 것과 달리 feature map의 각 local part (pixel 또는 patch)와 Y의 score를 모두 계산하여 평균을 취합니다. Local DIM은 global 정보인 Y와 local 정보인 각 pixel or patch의 상호정보량을 계산하여 이미지에 공유된 정보를 학습하고 불필요한 정보의 인코딩을 막습니다. 
 
-![formular](https://render.githubusercontent.com/render/math?math=$(\hat{\omega}, \hat{\psi})_G = argmax_{\omega, \psi}\hat{I}_{\omega, \psi}(X;E_{\psi}(X))$)
+![formular](https://render.githubusercontent.com/render/math?math=(\hat{\omega}, \hat{\psi})_G = argmax_{\omega, \psi}\hat{I}_{\omega, \psi}(X;E_{\psi}(X)))
 
 3. Matching representations to a prior distribution
 
 잠재 표현이 원 데이터의 정보를 최대한 보존하는 것도 중요하지만 주어진 task에 따라 independent, compact or disentangled 등 통계적 제약을 만족해야 할 수 있습니다. DIM은 adversarial training 구조에서 잠재 표현 Y의 분포 U_{\psi, P}가 사전 확률 분포 V를 따르도록 학습됩니다.
 
-![formular](https://render.githubusercontent.com/render/math?math=$(\hat{\omega}, \hat{\psi})_P = argmin_{\psi}argmax_{\phi}\hat{\mathit{D}_{\phi}(\mathbb{V}||\mathbb{U}_{\psi, \mathbb{P}} = \mathbb{E}_{\mathbb{V}}[log\mathit{D}_\phi(y)] + \mathbb{E}_{\mathbb{P}}[log(1-\mathit{D}_\phi(\mathit{E}_{\psi}(x)))]$)
+![formular](https://render.githubusercontent.com/render/math?math=(\hat{\omega}, \hat{\psi})_P = argmin_{\psi}argmax_{\phi}\hat{\mathit{D}_{\phi}(\mathbb{V}||\mathbb{U}_{\psi, \mathbb{P}} = \mathbb{E}_{\mathbb{V}}[log\mathit{D}_\phi(y)] + \mathbb{E}_{\mathbb{P}}[log(1-\mathit{D}_\phi(\mathit{E}_{\psi}(x)))])
 
 세 목적함수, global and local MI maximization and prior matching은 alpha, beta, gamma 정규화 파라미터가 곱해져 3가지 목적을 동시에 달성합니다.
 
