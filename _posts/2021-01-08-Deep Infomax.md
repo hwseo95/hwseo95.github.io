@@ -59,7 +59,9 @@ Deep Infomax는 잠재 표현을 학습하는 인코더, 인풋의 global 정보
 
 ![그림1](https://hwseo95.github.io/assets/img/Article_review/deep_infomax/deepinfomax_fig1.png)
 
-이미지 (다른 temporal data에도 적용 가능) X는 Figure 1처럼 여러 feature map을 통해 M * M feature vector로 인코딩되고, 한 feature vector Y로 축약됩니다 y=E_\psi(x). y는 인코더에서 X와의 상호정보량 I(x, y)가 최대가 되는 파라미터 \psi를 찾도록 학습하게 됩니다. 
+이미지 (다른 temporal data에도 적용 가능) X는 Figure 1처럼 여러 feature map을 통해 M * M feature vector로 인코딩되고, 한 feature vector Y로 축약됩니다.  
+y는 인코더에서 X와의 상호정보량 I(x, y)가 최대가 되는 파라미터 \psi를 찾도록 학습하게 됩니다.   
+식으로 간단하게 표현하면 y=E_\psi(x).  
 
 ![그림2](https://hwseo95.github.io/assets/img/Article_review/deep_infomax/deepinfomax_fig2.png)
 
