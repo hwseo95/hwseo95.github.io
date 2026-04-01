@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyunwoo Seo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #226e93;
+            --primary-dark: #1a5570;
+            --text: #333333;
+            --text-light: #555555;
+            --text-muted: #777777;
+            --bg: #ffffff;
+            --bg-gray: #f2f2f2;
+            --border: #dddddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 52px;
+        }
+
+        .nav-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 400;
+            padding: 0.85rem 1rem;
+            transition: all 0.2s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Main content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero section — reference style with photo + info side by side */
+        .hero {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 2px solid var(--bg-gray);
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
+
+        .hero-photo img {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero-info {
+            flex: 1;
+        }
+
+        .hero-info h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-positions {
+            margin-bottom: 1rem;
+        }
+
+        .hero-positions .position-line {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .hero-positions .position-line .role {
+            font-weight: 700;
+        }
+
+        .hero-positions .position-line .at {
+            color: var(--text-muted);
+        }
+
+        .hero-positions .position-line a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .hero-positions .position-line a:hover {
+            text-decoration: underline;
+        }
+
+        .hero-email {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-top: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-email i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .hero-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 0.4rem 0.9rem;
+            border: 2px solid var(--primary);
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .hero-links a:hover {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .hero-links a i {
+            font-size: 0.95rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 2.25rem 0;
+            border-bottom: 2px solid var(--bg-gray);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+
+        .section-content {
+            margin-top: 0.5rem;
+        }
+
+        /* Research Interests */
+        .research-area {
+            margin-bottom: 1rem;
+        }
+
+        .research-area:last-child {
+            margin-bottom: 0;
+        }
+
+        .research-area h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+        }
+
+        .research-area p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Timeline items (Education, Experience) */
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .timeline-date {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .timeline-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .timeline-details {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            margin-top: 0.3rem;
+        }
+
+        .timeline-details li {
+            margin-bottom: 0.15rem;
+            margin-left: 1.25rem;
+        }
+
+        /* Publications */
+        .pub-category {
+            margin-bottom: 1.75rem;
+        }
+
+        .pub-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .pub-category-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+            padding-left: 0;
+        }
+
+        .pub-item {
+            padding: 0.65rem 0;
+            margin-bottom: 0.4rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pub-item:last-child {
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--text);
+            margin-bottom: 0.15rem;
+        }
+
+        .pub-authors {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.15rem;
+        }
+
+        .pub-authors .me {
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .pub-venue {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .pub-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.1rem 0.45rem;
+            border-radius: 3px;
+            margin-left: 0.35rem;
+            vertical-align: middle;
+        }
+
+        .badge-first {
+            background: #e3f0fa;
+            color: #1a5570;
+        }
+
+        .badge-cofirst {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-review {
+            background: #fff8e1;
+            color: #e65100;
+        }
+
+        .badge-wip {
+            background: #f5f5f5;
+            color: #777;
+        }
+
+        /* Projects */
+        .project-item {
+            padding: 0.75rem 0;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-item:last-child {
+            border-bottom: none;
+        }
+
+        .project-title {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--text);
+            margin-bottom: 0.15rem;
+        }
+
+        .project-meta {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .project-desc {
+            font-size: 0.88rem;
+            color: var(--text-light);
+        }
+
+        .project-desc li {
+            margin-left: 1.25rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .fellowship-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            background: #fff3cd;
+            color: #856404;
+            margin-left: 0.3rem;
+            vertical-align: middle;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: var(--bg-gray);
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 680px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-email {
+                justify-content: center;
+            }
+
+            .hero-links {
+                justify-content: center;
+            }
+
+            main {
+                padding: 0 1.25rem;
+            }
+
+            .hero-info h1 {
+                font-size: 1.8rem;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                gap: 0.1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.78rem;
+                padding: 0.8rem 0.6rem;
+            }
+
+            .nav-name {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-name">Hyunwoo Seo</a>
+        <div class="nav-links">
+            <a href="#about">Home</a>
+            <a href="#publications">Publications</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!-- Hero -->
+    <section class="hero" id="about">
+        <div class="hero-photo">
+            <img src="profile.jpg" alt="Hyunwoo Seo">
+        </div>
+        <div class="hero-info">
+            <h1>Hyunwoo Seo</h1>
+            <div class="hero-positions">
+                <div class="position-line">
+                    <span class="role">Postdoc</span> <span class="at">@</span> <a href="https://sil.unist.ac.kr/" target="_blank">UNIST Service Intelligence Lab</a>
+                </div>
+                <div class="position-line">
+                    <span class="role">Ph.D.</span> <span class="at">@</span> <a href="https://www.unist.ac.kr/" target="_blank">UNIST Industrial Engineering</a>
+                </div>
+            </div>
+            <div class="hero-email">
+                <i class="fas fa-envelope"></i>
+                hseo75 at unist dot ac dot kr
+            </div>
+            <div class="hero-links">
+                <a href="https://scholar.google.com/citations?user=plkwikYAAAAJ&hl=ko" target="_blank">
+                    <i class="fas fa-graduation-cap"></i> Google Scholar
+                </a>
+                <a href="https://www.linkedin.com/in/hyunwoo-seo-844055280/" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section id="research">
+        <h2 class="section-title">Research Interests</h2>
+        <div class="section-content">
+            <div class="research-area">
+                <h3>Time Series Self-Supervised Learning</h3>
+                <p>Developing novel time series self-supervised learning methods via masked modeling and contrastive learning. Bridging and extending self-supervised learning paradigms from other modalities to time series.</p>
+            </div>
+            <div class="research-area">
+                <h3>Time Series Foundation Model</h3>
+                <p>Developing domain-specific and general time series foundation models. Enhancing time series tasks by adapting large language models to time series data.</p>
+            </div>
+            <div class="research-area">
+                <h3>Real-World Applications</h3>
+                <p>Designing domain-specific pretext tasks for solving real-world problems in areas such as transportation, healthcare, and industrial services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+        <h2 class="section-title">Publications</h2>
+        <div class="section-content">
+
+            <div class="pub-category">
+                <div class="pub-category-title">Conference Papers</div>
+
+                <div class="pub-item">
+                    <div class="pub-title">
+                        ST-MTM: Masked Time Series Modeling with Seasonal-Trend Decomposition for Time Series Forecasting
+                        <span class="pub-badge badge-first">First Author</span>
+                    </div>
+                    <div class="pub-authors"><span class="me">H. Seo</span> and C. Lim</div>
+                    <div class="pub-venue">ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2025</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">
+                        NERVE: Noise-variability-robust EEG Foundation Model with Electrode-brain Interactions
+                        <span class="pub-badge badge-first">First Author</span>
+                        <span class="pub-badge badge-review">Under Review</span>
+                    </div>
+                    <div class="pub-authors"><span class="me">H. Seo</span>, J. Kim, B. So, M. Kim, Y. Song, S. Jin, W. Yeo, and C. Lim</div>
+                    <div class="pub-venue">International Conference on Learning Representations (ICLR), 2026</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">
+                        ShuffleMTM: Learning Cross-Channel Dependence in Channel-Independent Time Series Masked Pre-training
+                        <span class="pub-badge badge-first">First Author</span>
+                        <span class="pub-badge badge-wip">Work in Progress</span>
+                    </div>
+                    <div class="pub-authors"><span class="me">H. Seo</span>, B. So, and C. Lim</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">
+                        Integrating Domain-Specialized Experts toward a Unified Time Series Foundation Model
+                        <span class="pub-badge badge-cofirst">Co-first Author</span>
+                        <span class="pub-badge badge-wip">Work in Progress</span>
+                    </div>
+                    <div class="pub-authors">S. Park, <span class="me">H. Seo</span>, Y. Ma, C. Lim, and J. Shi</div>
+                </div>
+            </div>
+
+            <div class="pub-category">
+                <div class="pub-category-title">Journal Papers</div>
+
+                <div class="pub-item">
+                    <div class="pub-title">
+                        Driving Risk Assessment Using Non-Negative Matrix Factorization With Driving Behavior Records
+                        <span class="pub-badge badge-first">First Author</span>
+                    </div>
+                    <div class="pub-authors"><span class="me">H. Seo</span>, J. Shin, K. Kim, C. Lim, and J. Bae</div>
+                    <div class="pub-venue">IEEE Transactions on Intelligent Transportation Systems, 2022</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">
+                        Development of an Offline OOH Advertising Recommendation System using Negative Sampling and Deep Interest Network
+                        <span class="pub-badge badge-first">First Author</span>
+                    </div>
+                    <div class="pub-authors"><span class="me">H. Seo</span>, S. Kim, S. Ryu, S. Jo, S. Cho, J. Sohn, and C. Lim</div>
+                    <div class="pub-venue">Multimedia Tools and Applications, 2024</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">
+                        An All-in-One Wearable Platform Offers a Continuous Assessment and Early Diagnosis of Acute Kidney Injury for Outdoor Workers
+                        <span class="pub-badge badge-cofirst">Co-first Author</span>
+                        <span class="pub-badge badge-review">Under Review</span>
+                    </div>
+                    <div class="pub-authors">H. Yi, R. Chicas, <span class="me">H. Seo</span>, Y. Liu, H. Kim, T. Kang, S. Ban, J. Lee, K. Kim, C. Lim, L. Xiong, V. Hertzberg, and W. Yeo</div>
+                    <div class="pub-venue">Science Translational Medicine</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="section-content">
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">Visiting Researcher — Georgia Institute of Technology</span>
+                    <span class="timeline-date">Dec 2024 – Dec 2025</span>
+                </div>
+                <div class="timeline-subtitle">Georgia, United States</div>
+                <ul class="timeline-details">
+                    <li>Developed a continuous renal function assessment method for outdoor workers using self-supervised learning on multi-modal sensor signals.</li>
+                    <li>Developing a noise-variability-robust biosignal foundation model.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">AI Engineer — CJ Olivenetworks (AI Core Laboratory)</span>
+                    <span class="timeline-date">Mar 2021 – Jun 2021</span>
+                </div>
+                <div class="timeline-subtitle">Seoul, Republic of Korea</div>
+                <ul class="timeline-details">
+                    <li>Developed an offline out-of-home advertising recommendation system.</li>
+                    <li>Launched an out-of-home advertising recommendation service.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">Teaching Assistant — UNIST</span>
+                    <span class="timeline-date">Spring 2015 – Fall 2022</span>
+                </div>
+                <ul class="timeline-details">
+                    <li>Calculus (Spring 2015 – Fall 2015)</li>
+                    <li>Applied Statistics (Spring 2019)</li>
+                    <li>Service Intelligence (Fall 2021, Fall 2022)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="section-content">
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">Ph.D. in Industrial Engineering</span>
+                    <span class="timeline-date">Mar 2020 – Feb 2026</span>
+                </div>
+                <div class="timeline-subtitle">Ulsan National Institute of Science and Technology (UNIST)</div>
+                <div class="timeline-details">GPA: 4.19 / 4.3 · Advisor: Prof. Chiehyeon Lim</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">B.S. in Mathematical Science</span>
+                    <span class="timeline-date">Mar 2014 – Feb 2020</span>
+                </div>
+                <div class="timeline-subtitle">Ulsan National Institute of Science and Technology (UNIST)</div>
+                <div class="timeline-details">GPA: 3.87 / 4.3</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fellowships & R&D Projects -->
+    <section id="projects">
+        <h2 class="section-title">Fellowships & R&D Projects</h2>
+        <div class="section-content">
+            <div class="project-item">
+                <div class="project-title">
+                    Development of Masked Time-Series Modeling Framework
+                    <span class="fellowship-tag">NRF Predoctoral Fellowship</span>
+                </div>
+                <div class="project-meta">Principal Investigator · Aug 2024 – Present</div>
+                <div class="project-desc">Addressing spatial-temporal dependencies in multivariate time series with insufficient labels.</div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Time-Series Self-Supervised Learning Technologies</div>
+                <div class="project-meta">IITP SW Starlab · Aug 2024 – Present</div>
+                <ul class="project-desc">
+                    <li>Developed a unified, noise-variability-robust time-series foundation model that generalizes across multiple domains and tasks.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">AI Technologies and Sensor Systems for Bioelectrical Signals</div>
+                <div class="project-meta">IITP · Apr 2024 – Present</div>
+                <ul class="project-desc">
+                    <li>Constructing benchmark datasets for bioelectrical signals and defining downstream tasks.</li>
+                    <li>Developed a noise-variability-robust self-supervised learning method for bioelectrical signals.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Air Conditioner B2B Service Design from Log Sequences</div>
+                <div class="project-meta">LG H&A · Sep 2021 – Aug 2022</div>
+                <ul class="project-desc">
+                    <li>Developed a deep clustering algorithm for customers' log sequences.</li>
+                    <li>Developed a repair service prediction algorithm to enable proactive maintenance.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Driving Risk Assessment on Driving Time Series</div>
+                <div class="project-meta">Korea Transportation Safety Authority · 2020</div>
+                <ul class="project-desc">
+                    <li>Developed a driving risk score calculation algorithm using non-negative matrix factorization.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Hyunwoo Seo</p>
+</footer>
+
+<script>
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const observerOptions = {
+        rootMargin: '-60px 0px -60% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle('active',
+                        link.getAttribute('href') === `#${entry.target.id}`
+                    );
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
