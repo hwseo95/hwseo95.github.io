@@ -71,9 +71,9 @@
         .nav-links a {
             color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             font-weight: 400;
-            padding: 0.85rem 1rem;
+            padding: 0.85rem 0.75rem;
             transition: all 0.2s ease;
             border-bottom: 3px solid transparent;
         }
@@ -92,7 +92,7 @@
             padding: 0 2rem;
         }
 
-        /* Hero section — reference style with photo + info side by side */
+        /* Hero section */
         .hero {
             padding-top: 2.5rem;
             padding-bottom: 2.5rem;
@@ -242,7 +242,7 @@
             color: var(--text-light);
         }
 
-        /* Timeline items (Education, Experience) */
+        /* Timeline items */
         .timeline-item {
             margin-bottom: 1.5rem;
             padding-left: 0;
@@ -372,6 +372,51 @@
             color: #777;
         }
 
+        /* Talks & Lectures */
+        .talk-item {
+            padding: 0.65rem 0;
+            margin-bottom: 0.4rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .talk-item:last-child {
+            border-bottom: none;
+        }
+
+        .talk-date-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: #e3f0fa;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            vertical-align: middle;
+            margin-left: 0.4rem;
+        }
+
+        .talk-content {
+            flex: 1;
+        }
+
+        .talk-title {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--text);
+            margin-bottom: 0.1rem;
+        }
+
+        .talk-venue {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .talk-venue em {
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
         /* Projects */
         .project-item {
             padding: 0.75rem 0;
@@ -465,6 +510,11 @@
             .nav-name {
                 font-size: 0.95rem;
             }
+
+            .talk-item {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
         }
     </style>
 </head>
@@ -475,9 +525,12 @@
         <a href="#" class="nav-name">Hyunwoo Seo</a>
         <div class="nav-links">
             <a href="#about">Home</a>
+            <a href="#research">Research Interests</a>
             <a href="#publications">Publications</a>
             <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Fellowships &amp; R&amp;D Projects</a>
+            <a href="#talks">Talks &amp; Lectures</a>
         </div>
     </div>
 </nav>
@@ -549,34 +602,6 @@
                     <div class="pub-authors"><span class="me">H. Seo</span> and C. Lim</div>
                     <div class="pub-venue">ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2025</div>
                 </div>
-<!-- 
-                <div class="pub-item">
-                    <div class="pub-title">
-                        NERVE: Noise-variability-robust EEG Foundation Model with Electrode-brain Interactions
-                        <span class="pub-badge badge-first">First Author</span>
-                        <span class="pub-badge badge-review">Under Review</span>
-                    </div>
-                    <div class="pub-authors"><span class="me">H. Seo</span>, J. Kim, B. So, M. Kim, Y. Song, S. Jin, W. Yeo, and C. Lim</div>
-                    <div class="pub-venue">International Conference on Learning Representations (ICLR), 2026</div>
-                </div> -->
-<!-- 
-                <div class="pub-item">
-                    <div class="pub-title">
-                        ShuffleMTM: Learning Cross-Channel Dependence in Channel-Independent Time Series Masked Pre-training
-                        <span class="pub-badge badge-first">First Author</span>
-                        <span class="pub-badge badge-wip">Work in Progress</span>
-                    </div>
-                    <div class="pub-authors"><span class="me">H. Seo</span>, B. So, and C. Lim</div>
-                </div> -->
-
-                <!-- <div class="pub-item">
-                    <div class="pub-title">
-                        Integrating Domain-Specialized Experts toward a Unified Time Series Foundation Model
-                        <span class="pub-badge badge-cofirst">Co-first Author</span>
-                        <span class="pub-badge badge-wip">Work in Progress</span>
-                    </div>
-                    <div class="pub-authors">S. Park, <span class="me">H. Seo</span>, Y. Ma, C. Lim, and J. Shi</div>
-                </div> -->
             </div>
 
             <div class="pub-category">
@@ -591,7 +616,6 @@
                     <div class="pub-venue">Korean Institute of Industrial Engineers, 2026</div>
                 </div>
 
-                
                 <div class="pub-item">
                     <div class="pub-title">
                         Development of an Offline OOH Advertising Recommendation System using Negative Sampling and Deep Interest Network
@@ -734,7 +758,7 @@
 
     <!-- Fellowships & R&D Projects -->
     <section id="projects">
-        <h2 class="section-title">Fellowships & R&D Projects</h2>
+        <h2 class="section-title">Fellowships &amp; R&amp;D Projects</h2>
         <div class="section-content">
             <div class="project-item">
                 <div class="project-title">
@@ -758,7 +782,7 @@ Bioelectrical Signal Time Series Data</div>
 
             <div class="project-item">
                 <div class="project-title">Data-Driven Design and Improvement of Air Conditioner B2B Services via Maintenance Log Analysis</div>
-                <div class="project-meta">LG H&A · Sep 2021 – Aug 2022</div>
+                <div class="project-meta">LG H&amp;A · Sep 2021 – Aug 2022</div>
             </div>
 
             <div class="project-item">
@@ -766,6 +790,42 @@ Bioelectrical Signal Time Series Data</div>
                 <div class="project-meta">Korea Transportation Safety Authority · 2020</div>
             </div>
             
+        </div>
+    </section>
+
+    <!-- Talks & Lectures -->
+    <section id="talks">
+        <h2 class="section-title">Talks &amp; Lectures</h2>
+        <div class="section-content">
+
+            <div class="talk-item">
+                <div class="talk-content">
+                    <div class="talk-title">Foundation Models for Time Series Data <span class="talk-date-badge">Jun 2026</span></div>
+                    <div class="talk-venue">Guest Lecture in <em>Graduate School of Data Science</em>, Kyungpook National University</div>
+                </div>
+            </div>
+
+            <div class="talk-item">
+                <div class="talk-content">
+                    <div class="talk-title">Artificial Intelligence for Time Series Forecasting <span class="talk-date-badge">Jun 2026</span></div>
+                    <div class="talk-venue">Guest Lecture at Sogang University</div>
+                </div>
+            </div>
+
+            <div class="talk-item">
+                <div class="talk-content">
+                    <div class="talk-title">Artificial Intelligence for Time Series Forecasting <span class="talk-date-badge">Mar 2026</span></div>
+                    <div class="talk-venue">Guest Lecture in <em>Industrial Operations Management</em>, UNIST</div>
+                </div>
+            </div>
+
+            <div class="talk-item">
+                <div class="talk-content">
+                    <div class="talk-title">NERVE: Noise-Variability-Robust EEG Foundation Model with Electrode-Brain Interactions for Diverse BCI Tasks <span class="talk-date-badge">Oct 2025</span></div>
+                    <div class="talk-venue">Lightning Talk at <em>Wearable Health Equity Workshop</em>, Georgia Institute of Technology</div>
+                </div>
+            </div>
+
         </div>
     </section>
 </main>
